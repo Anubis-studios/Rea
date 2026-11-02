@@ -19,6 +19,7 @@ import { captureProviderEnvironment } from "./providerEnvironment.js";
 import { createByteEntropyService } from "../composition/binaryDiagnostics.js";
 import { registerElfNotesTool } from "./registerElfNotesTool.js";
 import { registerAppleIpsTool } from "./registerAppleIpsTool.js";
+import { registerUnityAssetsTool } from "./registerUnityAssetsTool.js";
 import { registerKernelModuleTool } from "./registerKernelModuleTool.js";
 import { registerPeLoadConfigTool } from "./registerPeLoadConfigTool.js";
 import { registerPeCertificatesTool } from "./registerPeCertificatesTool.js";
@@ -202,6 +203,7 @@ export const createServer = (
     devicetree,
     elfNotes,
     appleIps,
+    unityAssets,
     kernelModule,
     peLoadConfig,
     peCertificates,
@@ -457,6 +459,13 @@ export const createServer = (
       registerAppleIpsTool(
         server,
         appleIps,
+        toolLogger,
+        recordEvidence,
+        analysisAdmission,
+      );
+      registerUnityAssetsTool(
+        server,
+        unityAssets,
         toolLogger,
         recordEvidence,
         analysisAdmission,
